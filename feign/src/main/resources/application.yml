@@ -1,0 +1,30 @@
+# 应用名称
+spring:
+  application:
+    name: feign
+# 应用服务 WEB 访问端口
+server:
+  port: 8087
+eureka:
+  client:
+    service-url:
+      dafaultZone: http://localhost:8761/eureka/
+#feign 常用配置
+feign:
+  hystrix:
+    #在feign中开启hystrix
+    enabled: true
+  compression:
+    request:
+      #是否对请求进行GZIP压缩
+      enabled: false
+      #指定压缩的请求数据类型
+      mime-types: text/xml,application/xml,application/json
+      #超过该大小的请求会被压缩
+      min-request-size: 2048
+    response:
+      enabled: false #是否对响应进行GZIP压缩
+#配置feign的日志级别
+logging:
+  level:
+    com.jourwon.springcloud.service: debug
